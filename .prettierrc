@@ -1,0 +1,33 @@
+# ==============================================================================
+# WSU Workshop: Prettier Code Formatter Configuration (.prettierrc)
+# ==============================================================================
+# CONCEPT: Opinionated Code Formatting
+# ------------------------------------------------------------------------------
+# Prettier automatically formats code into a consistent style across the entire
+# repository, eliminating style debates in pull requests.
+#
+# LECTURE TALKING POINTS:
+# 1. Prettier vs Linter:
+#    - Prettier handles code aesthetics (spacing, indentation, quotes, commas).
+#    - ESLint handles code quality and bug prevention (types, unused vars, async handling).
+# 2. Why Trailing Commas ("all")?
+#    - When adding a new item to a multiline array or object, git diff only shows
+#      one new line added instead of also modifying the previous line to add a comma.
+# 3. Print Width (80):
+#    - Keeps code readable side-by-side during code reviews and in split editors.
+# ==============================================================================
+
+# 1. Print semicolons at the ends of statements
+semi: true
+
+# 2. Use double quotes ("example") instead of single quotes ('example') for strings
+singleQuote: false
+
+# 3. Print trailing commas wherever valid in multi-line structures (objects, arrays, type definitions)
+trailingComma: all
+
+# 4. Wrap lines that exceed 80 characters for clean side-by-side diffs
+printWidth: 80
+
+# 5. Indent lines with 2 spaces per indentation level
+tabWidth: 2

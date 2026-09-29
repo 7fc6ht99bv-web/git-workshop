@@ -1,0 +1,37 @@
+{
+  "name": "WSU Workshop: TypeScript & CI/CD Dev Environment",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
+
+  // Forward the Vite interactive development server port
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Calculator UI (Vite)",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  // Lifecycle script run automatically when the Dev Container / Codespace is created
+  "postCreateCommand": "npm install",
+
+  // Automatically start the interactive UI dev server when attaching/opening
+  "postStartCommand": "npm run dev -- --host 0.0.0.0 --port 5173",
+
+  // VS Code customizations, extensions, and editor settings inside the VM
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        }
+      }
+    }
+  }
+}

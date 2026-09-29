@@ -1,0 +1,54 @@
+{
+  // ============================================================================
+  // WSU Workshop: TypeScript Compiler Configuration (tsconfig.json)
+  // ============================================================================
+  // CONCEPT: Strict Static Type Checking & Configuration
+  // ----------------------------------------------------------------------------
+  // tsconfig.json instructs the TypeScript compiler (tsc) how to parse, validate,
+  // and typecheck our source code.
+  //
+  // In this workshop starter, we configure strict enterprise-grade rules to catch
+  // potential bugs at compile-time before code ever runs in development or CI.
+  // ============================================================================
+  "compilerOptions": {
+    // 1. Language Target & ECMAScript Features
+    // Output target ECMAScript version (modern JS feature set including top-level await, class fields, etc.)
+    "target": "ES2022",
+
+    // 2. Module System
+    // Specifies module code generation. "NodeNext" provides official ESM (ECMAScript Modules) support for Node.js
+    "module": "NodeNext",
+    // Specifies how TypeScript resolves module specifiers and import paths (matching Node.js ESM resolution)
+    "moduleResolution": "NodeNext",
+
+    // 3. Standard Library Type Definitions
+    // Available global runtime APIs (e.g., Array, Promise, Map, Set, Object.hasOwn, DOM APIs for UI)
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    // 4. Strictness & Quality Gates
+    // Enables wide spectrum of strict type-checking behaviors (acts as the foundation for type safety)
+    "strict": true,
+    // Disallow expressions and declarations with an implied 'any' type; requires explicit typing
+    "noImplicitAny": true,
+    // Ensures 'null' and 'undefined' are distinct types and not assignable to strings, numbers, objects, etc.
+    "strictNullChecks": true,
+    // Enforces that derived class overrides are explicitly annotated with the 'override' keyword
+    "noImplicitOverride": true,
+    // Differentiates between a property being omitted vs explicitly assigned 'undefined'
+    "exactOptionalPropertyTypes": true,
+    // Adds 'undefined' to any indexed access (e.g., array[index] or record[key]), forcing safe boundary checks
+    "noUncheckedIndexedAccess": true,
+
+    // 5. Cross-Platform Team Compatibility
+    // Enforces consistent casing across operating systems (prevents case sensitivity bugs on Linux/Windows/macOS)
+    "forceConsistentCasingInFileNames": true,
+
+    // 6. Performance & Compilation Behavior
+    // Skip type checking of all declaration files (*.d.ts) in dependencies to significantly speed up compilation
+    "skipLibCheck": true,
+    // Do not generate JavaScript output files (*.js, *.d.ts) to disk; tsc is used purely for type-checking
+    "noEmit": true
+  },
+  // Scope: Directories and files included in type checking
+  "include": ["src/**/*", "tests/**/*"]
+}

@@ -1,0 +1,13 @@
+# ==============================================================================
+# WSU Workshop: Husky Pre-Commit Git Hook
+# ==============================================================================
+# Git hooks are scripts triggered automatically before or after Git events.
+# The 'pre-commit' hook runs locally when a developer types 'git commit'.
+#
+# If any command fails (exit code != 0), the commit is aborted.
+# 1. lint-staged: Formats and lints only files currently staged for commit.
+# 2. typecheck: Ensures full project TypeScript compilation passes before committing.
+# ==============================================================================
+
+npx lint-staged
+npm run typecheck
